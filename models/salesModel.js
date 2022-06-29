@@ -1,4 +1,4 @@
-const connection = require("../db/connection");
+const connection = require('../db/connection');
 
 const getAll = async () => {
   const conexaoDB = await connection.execute(`SELECT sp.sale_id AS saleId, 
@@ -36,7 +36,7 @@ const salesUpdate = async (id, { productId, quantity }) => {
 };
 
 const addSale = async (sale) => {
-  const queryInsert = "INSERT INTO StoreManager.sales (date) VALUES (DEFAULT);";
+  const queryInsert = 'INSERT INTO StoreManager.sales (date) VALUES (DEFAULT)';
   await connection.execute(queryInsert);
   const query = `
       INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) 
@@ -46,7 +46,7 @@ const addSale = async (sale) => {
     connection.execute(query, [infoProduct.productId, infoProduct.quantity])
   );
 
-  const queryId = "SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1;";
+  const queryId = 'SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1';
 
   const [id] = await connection.execute(queryId);
   await connection.execute(`UPDATE StoreManager.products
@@ -67,7 +67,7 @@ const remove = async (id) => {
   await connection.execute(`UPDATE StoreManager.products
     SET quantity = StoreManager.products.quantity + ${quantityId[0].quantity}
     WHERE StoreManager.products.id = ${salesProductsId[0].product_id}`);
-  await connection.execute("DELETE FROM StoreManager.sales WHERE id=?", [id]);
+  await connection.execute('DELETE FROM StoreManager.sales WHERE id=?', [id]);
 };
 
 module.exports = {

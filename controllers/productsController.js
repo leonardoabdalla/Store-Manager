@@ -1,11 +1,11 @@
-const productsServices = require("../services/productsServices");
+const productsServices = require('../services/productsService');
 
 const productsGetAll = async (req, res) => {
   try {
     const [rows] = await productsServices.getAll();
     res.status(200).json(rows);
   } catch (err) {
-    res.status(500).json({ message: "erro interno" });
+    res.status(500).json({ message: 'erro interno' });
   }
 };
 
@@ -14,11 +14,11 @@ const productsGetId = async (req, res) => {
     const { id } = req.params;
     const [rows] = await productsServices.getAll(id);
     if (rows.length === 0)
-      return res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({ message: 'Product not found' });
     res.status(200).json(...rows);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "erro interno" });
+    res.status(500).json({ message: 'erro interno' });
   }
 };
 
@@ -28,7 +28,7 @@ const newProduct = async (req, res) => {
     const result = await productsServices.add({ name, quantity });
     res.status(201).json(result);
   } catch (err) {
-    res.status(409).json({ message: "Product already exists" });
+    res.status(409).json({ message: 'Product already exists' });
   }
 };
 
@@ -49,7 +49,7 @@ const remove = async (req, res) => {
     const { id } = req.params;
     const [rows] = await productsServices.getAll(id);
     if (rows.length === 0)
-      return res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({ message: 'Product not found' });
     await productsServices.remove(id);
     res.status(204).end();
   } catch (err) {

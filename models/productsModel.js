@@ -1,4 +1,4 @@
-const connection = require("../db/connection");
+const connection = require('../db/connection');
 
 const getAll = () =>
   connection.execute(
@@ -49,7 +49,7 @@ const update = async (name, quantity, id) => {
 };
 
 const remove = (id) =>
-  connection.execute("DELETE FROM StoreManager.products WHERE id=?", [id]);
+  connection.execute('DELETE FROM StoreManager.products WHERE id=?', [id]);
 
 module.exports = {
   getAll,

@@ -1,4 +1,4 @@
-const salesService = require("../services/salesServices");
+const salesService = require('../services/salesServices');
 
 const salesGetAll = async (req, res) => {
   try {
@@ -6,7 +6,7 @@ const salesGetAll = async (req, res) => {
     res.status(200).json(rows);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "erro interno" });
+    res.status(500).json({ message: 'erro interno' });
   }
 };
 
@@ -15,11 +15,11 @@ const salesGetId = async (req, res) => {
     const { id } = req.params;
     const [rows] = await salesService.getAll(id);
     if (rows.length === 0)
-      return res.status(404).json({ message: "Sale not found" });
+      return res.status(404).json({ message: 'Sale not found' });
     res.status(200).json(rows);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "erro interno" });
+    res.status(500).json({ message: 'erro interno' });
   }
 };
 
@@ -48,7 +48,7 @@ const addSale = async (req, res) => {
     };
     res.status(201).json(result);
   } catch (err) {
-    res.status(422).json({ message: "Such amount is not permitted to sell" });
+    res.status(422).json({ message: 'Such amount is not permitted to sell' });
   }
 };
 
@@ -57,7 +57,7 @@ const remove = async (req, res) => {
     const { id } = req.params;
     const [rows] = await salesService.getAll(id);
     if (rows.length === 0)
-      return res.status(404).json({ message: "Sale not found" });
+      return res.status(404).json({ message: 'Sale not found' });
     await salesService.remove(id);
     res.status(204).end();
   } catch (err) {

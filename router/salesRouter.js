@@ -1,13 +1,13 @@
-const express = require("express");
+const express = require('express');
 
-const salesController = require("../controllers/salesControler");
+const salesController = require('../controllers/salesControler');
 
 const router = express.Router();
 
-router.get("/", salesController.salesGetAll);
-router.get("/:id", salesController.salesGetId);
-router.put("/:id", salesController.salesUpdate);
-router.post("/", salesController.addSale);
-router.delete("/:id", salesController.remove);
+router.get('/', salesController.salesGetAll);
+router.get('/:id', salesController.salesGetId);
+router.put('/:id', salesController.salesUpdate);
+router.post('/', salesController.addSale);
+router.delete('/:id', salesController.remove);
 
 module.exports = router;

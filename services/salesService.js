@@ -1,5 +1,5 @@
-const salesModel = require("../models/salesModel");
-const productsModel = require("../models/productsModel");
+const salesModel = require('../models/salesModel');
+const productsModel = require('../models/productsModel');
 
 const getAll = (id = null) => {
   if (id) {
@@ -13,10 +13,10 @@ const salesUpdate = async (id, itemUpdated) => {
   await salesModel.salesUpdate(id, itemUpdated[0]);
 
   if (!itemUpdated[0].quantity || itemUpdated[0].quantity <= 0) {
-    throw new Error("quantity is required");
+    throw new Error('quantity is required');
   }
   if (Number.isInteger(itemUpdated[0].quantity) === false) {
-    throw new Error("quantity is required");
+    throw new Error('quantity is required');
   }
   const retorno = { saleId: +id, itemUpdated };
   return retorno;
@@ -27,7 +27,7 @@ const addSale = async (sale) => {
   // console.log(product);
   const sales = await salesModel.addSale(sale);
   if (sale[0].quantity > product[0].quantity) {
-    throw new "error"();
+    throw new 'error'();
   }
   // console.log('retorno => ', sales, 'enviado => ', sale);
   return sales;

@@ -1,4 +1,4 @@
-const productsModel = require("../models/productsModel");
+const productsModel = require('../models/productsModel');
 
 const getAll = (id = null) => {
   if (id) {
@@ -11,7 +11,7 @@ const add = async ({ name, quantity }) => {
   const [rows] = await productsModel.getByName(name);
   const result = await productsModel.createNewProduct(name, quantity);
   if (rows !== undefined) {
-    throw new Error("mensagem teste");
+    throw new Error('mensagem teste');
   }
   return result;
 };
@@ -19,7 +19,7 @@ const add = async ({ name, quantity }) => {
 const update = async (name, quantity, id) => {
   const [rows] = await productsModel.getById(id);
   if (rows.length === 0) {
-    throw new Error("Product not found");
+    throw new Error('Product not found');
   }
   await productsModel.update(name, quantity, id);
   const newProductUpdate = {
