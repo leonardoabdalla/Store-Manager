@@ -43,10 +43,8 @@ const addSale = async (sale) => {
   VALUES (( SELECT MAX(id) FROM StoreManager.sales), ?, ?);
     `;
   await sale.map((infoProduct) =>
-    connection.execute(query, [infoProduct.productId, infoProduct.quantity],
-    )
+    connection.execute(query, [infoProduct.productId, infoProduct.quantity],)
   );
-
   const queryId = 'SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1';
 
   const [id] = await connection.execute(queryId);
