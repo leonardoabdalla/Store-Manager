@@ -19,7 +19,7 @@ const getById = async (id) => {
     FROM StoreManager.sales_products AS sp
     INNER JOIN StoreManager.sales AS s
     ON sp.sale_id = s.id AND s.id = ?;`,
-    [id]
+    [id],
   );
   return conexaoBD;
 };
@@ -29,7 +29,7 @@ const salesUpdate = async (id, { productId, quantity }) => {
     `UPDATE StoreManager.sales_products
     SET quantity = ?
     WHERE sale_id = ? AND product_id = ?`,
-    [quantity, id, productId]
+    [quantity, id, productId],
   );
 
   return rows.affectedRows;
@@ -43,7 +43,8 @@ const addSale = async (sale) => {
   VALUES (( SELECT MAX(id) FROM StoreManager.sales), ?, ?);
     `;
   await sale.map((infoProduct) =>
-    connection.execute(query, [infoProduct.productId, infoProduct.quantity])
+    connection.execute(query, [infoProduct.productId, infoProduct.quantity],
+    )
   );
 
   const queryId = 'SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1';

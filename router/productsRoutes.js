@@ -12,7 +12,7 @@ router.post(
   '/',
   middleware.nameProducts,
   middleware.quantityProducts,
-  productsController.newProduct
+  productsController.newProduct,
 );
 router.put('/:id', productsController.update);
 router.delete('/:id', productsController.remove);

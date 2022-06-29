@@ -13,8 +13,9 @@ const productsGetId = async (req, res) => {
   try {
     const { id } = req.params;
     const [rows] = await productsServices.getAll(id);
-    if (rows.length === 0)
+    if(rows.length === 0)
       return res.status(404).json({ message: 'Product not found' });
+    
     res.status(200).json(...rows);
   } catch (err) {
     console.log(err);
@@ -50,6 +51,7 @@ const remove = async (req, res) => {
     const [rows] = await productsServices.getAll(id);
     if (rows.length === 0)
       return res.status(404).json({ message: 'Product not found' });
+    
     await productsServices.remove(id);
     res.status(204).end();
   } catch (err) {
