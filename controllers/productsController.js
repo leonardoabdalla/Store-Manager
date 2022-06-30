@@ -5,7 +5,7 @@ const productsGetAll = async (req, res) => {
     const [rows] = await productsServices.getAll();
     res.status(200).json(rows);
   } catch (err) {
-    res.status(500).json({ message: 'erro interno' });
+    res.status(500).json({ message: err.message });
   }
 };
 

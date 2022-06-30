@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 
 const productController = require('../../../controllers/productsController');
-const productService = require('../../../services/productsServices');
+const productService = require('../../../services/productsService');
 
 const req = {};
 const res = {};
