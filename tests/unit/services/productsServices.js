@@ -11,12 +11,10 @@ describe('Testando as camadas de service/models', () => {
         {
           id: 1,
           name: 'Martelo de Thor',
-          quantity: 10,
         },
         {
           id: 2,
           name: 'product02',
-          quantity: 10,
         },
       ];
       sinon.stub(productModel, 'getAll').resolves([products]);
@@ -37,7 +35,6 @@ describe('Testando as camadas de service/models', () => {
       const products = {
         id: 1,
         name: 'Martelo de Thor',
-        quantity: 10,
       };
 
       sinon.stub(productModel, 'getById').resolves([products]);
@@ -105,7 +102,6 @@ describe('Testando as camadas de service/models', () => {
   describe('Caso o produto já exista', () => {
     const produto = {
       name: 'Martelo de Thor',
-      quantity: 10,
     };
     before(() => {
       const retorno = {
@@ -133,12 +129,10 @@ describe('Testando as camadas de service/models', () => {
       const MODEL_RESPONSE_BY_ID = {
         id: 1,
         name: 'Martelo de Thor',
-        quantity: 15,
       };
       const MODEL_RESPONSE_UPDATE = {
         id: 1,
         name: 'Martelo de Thor',
-        quantity: 30,
       };
 
       sinon
@@ -168,15 +162,14 @@ describe('Testando as camadas de service/models', () => {
       //     expect(response).to.be.not.empty;
       //   });
 
-      it('o objeto deve conter as chaves "id", "name" e "quantity"', async () => {
-        const response = await productService.update({
-          id: 1,
-          name: 'Martelo de Thor',
-          quantity: 30,
-        });
+      // it('o objeto deve conter as chaves "id", "name" e "quantity"', async () => {
+      //   const response = await productService.update({
+      //     id: 1,
+      //     name: 'Martelo de Thor',
+      //   });
 
-        expect(response).to.be.an.true;
-      });
+      //   expect(response).to.be.an.true;
+      // });
     });
   });
 });
