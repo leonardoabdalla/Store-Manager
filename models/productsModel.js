@@ -2,8 +2,7 @@ const connection = require('../db/connection');
 
 const getAll = () =>
   connection.execute(
-    'SELECT * FROM StoreManager'
-    + '.products ORDER BY StoreManager.products.id ASC',
+    'SELECT * FROM StoreManager.products ORDER BY StoreManager.products.id ASC',
   );
 
 const getById = async (id) => {
