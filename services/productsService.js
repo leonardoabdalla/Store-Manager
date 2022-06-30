@@ -7,9 +7,9 @@ const getAll = (id = null) => {
   return productsModel.getAll();
 };
 
-const add = async ({ name, quantity }) => {
+const add = async ({ name }) => {
   const [rows] = await productsModel.getByName(name);
-  const result = await productsModel.createNewProduct(name, quantity);
+  const result = await productsModel.createNewProduct(name);
   if (rows !== undefined) {
     throw new Error('mensagem teste');
   }

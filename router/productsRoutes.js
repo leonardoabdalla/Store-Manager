@@ -11,7 +11,7 @@ router.get('/:id', productsController.productsGetId);
 router.post(
   '/',
   middleware.nameProducts,
-  middleware.quantityProducts,
+  // middleware.quantityProducts,
   productsController.newProduct,
 );
 router.put('/:id', productsController.update);

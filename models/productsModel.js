@@ -23,16 +23,15 @@ const getByName = async (name) => {
   return retornoBD;
 };
 
-const createNewProduct = async (name, quantity) => {
+const createNewProduct = async (name) => {
   const [row] = await connection.execute(
     `INSERT INTO
-    StoreManager.products (name, quantity) VALUES (?, ?)`,
-    [name, quantity],
+    StoreManager.products (name) VALUES (?)`,
+    [name],
   );
   const result = {
     id: row.insertId,
     name,
-    quantity,
   };
   return result;
 };
