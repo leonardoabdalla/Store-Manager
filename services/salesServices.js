@@ -27,7 +27,7 @@ const addSale = async (sale) => {
   if (!produto1) {
         throw new Error('mensagem teste');
   }
-  const [product] = await productsModel.getById(sale[0].productId);
+  // const [product] = await productsModel.getById(sale[0].productId);
   const sales = await salesModel.addSale(sale);
   return sales;
 };
