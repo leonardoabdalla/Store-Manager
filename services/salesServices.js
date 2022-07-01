@@ -1,5 +1,5 @@
 const salesModel = require('../models/salesModel');
-const productsModel = require('../models/productsModel');
+// const productsModel = require('../models/productsModel');
 
 const getAll = (id = null) => {
   if (id) {
