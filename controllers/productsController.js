@@ -47,8 +47,11 @@ const update = async (req, res, next) => {
 
 const remove = async (req, res) => {
   try {
+    console.log('req ==> ', req);
     const { id } = req.params;
+    console.log('id ==> ', id);
     const [rows] = await productsServices.getAll(id);
+    console.log('rows ==> ', rows);
     if (rows.length === 0) {  
       return res.status(404).json({ message: 'Product not found' });
     }  
