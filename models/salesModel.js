@@ -2,7 +2,7 @@ const connection = require('../db/connection');
 
 const getAll = async () => {
   const conexaoDB = await connection.execute(`SELECT sp.sale_id AS saleId, 
-    s.date, sp.product_id AS productId, p.quantity
+    s.date, sp.product_id AS productId, sp.quantity
     FROM StoreManager.sales_products AS sp
     INNER JOIN StoreManager.sales AS s
     ON sp.sale_id = s.id
@@ -36,6 +36,7 @@ const salesUpdate = async (id, { productId, quantity }) => {
 };
 
 const addSale = async (sale) => {
+  console.log(sale);
   const queryInsert = 'INSERT INTO StoreManager.sales (date) VALUES (DEFAULT)';
   await connection.execute(queryInsert);
   const query = `
@@ -47,9 +48,6 @@ const addSale = async (sale) => {
   const queryId = 'SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1';
 
   const [id] = await connection.execute(queryId);
-  await connection.execute(`UPDATE StoreManager.products
-    SET quantity = StoreManager.products.quantity - ${sale[0].quantity}
-    WHERE StoreManager.products.id = ${sale[0].productId}`);
   return id[0].id;
 };
 

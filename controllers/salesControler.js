@@ -36,9 +36,10 @@ const salesUpdate = async (req, res, next) => {
   }
 };
 
-const addSale = async (req, res) => {
+const addSale = async (req, res, next) => {
   try {
     const sales = req.body;
+    // console.log(sales);
     const rows = await salesService.addSale(sales);
     const result = {
       id: rows,
@@ -49,7 +50,7 @@ const addSale = async (req, res) => {
     };
     res.status(201).json(result);
   } catch (err) {
-    res.status(422).json({ message: 'Such amount is not permitted to sell' });
+    next(err);
   }
 };
 

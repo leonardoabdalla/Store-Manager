@@ -23,13 +23,14 @@ const salesUpdate = async (id, itemUpdated) => {
 };
 
 const addSale = async (sale) => {
-  const [product] = await productsModel.getById(sale[0].productId);
-  // console.log(product);
-  const sales = await salesModel.addSale(sale);
-  if (sale[0].quantity > product[0].quantity) {
-    throw new 'error'();
+  const produto1 = sale[0].productId;
+  if (!produto1) {
+        throw new Error("mensagem teste");
+
   }
-  // console.log('retorno => ', sales, 'enviado => ', sale);
+  const [product] = await productsModel.getById(sale[0].productId);
+  // console.log(produto1);
+  const sales = await salesModel.addSale(sale);
   return sales;
 };
 
