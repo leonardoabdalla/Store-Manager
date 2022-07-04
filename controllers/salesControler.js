@@ -65,8 +65,8 @@ const remove = async (req, res) => {
     await salesService.remove(id);
     res.status(204).end();
   } catch (err) {
-    console.log(err)
-    res.status(404).json({ message: "Product not found" });
+    console.log(err);
+    res.status(404).json({ message: 'Product not found' });
   }
 };
 

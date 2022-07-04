@@ -48,7 +48,8 @@ const addSale = async (sale) => {
     `;
   const resultado = await Promise.all(
     sale.map(async (infoProduct) =>
-      await connection.execute(query, [result[0].insertId, infoProduct.productId, infoProduct.quantity])
+      await connection.execute(query, [result[0]
+        .insertId, infoProduct.productId, infoProduct.quantity])
     )
   );
   console.log('result ==> ', result);

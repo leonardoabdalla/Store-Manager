@@ -1,6 +1,5 @@
 const salesModel = require('../models/salesModel');
 const productsModel = require('../models/productsModel');
-const { error } = require('shelljs');
 
 const getAll = (id = null) => {
   if (id) {
