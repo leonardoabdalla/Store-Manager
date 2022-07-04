@@ -112,29 +112,29 @@ describe('Testando a camada de models dos prdutos', () => {
       expect(row).to.be.a('object');
     });
   });
-  describe('Atualiza um item no banco de dados através da função update', () => {
-    const objEnviado = { name: "produto", quantity: 10 };
-    before(async () => {
-      const retorno = {
-        fieldCount: 0,
-        affectedRows: 1,
-        insertId: 4,
-        info: "",
-        serverStatus: 2,
-        warningStatus: 0,
-      };
+  // describe('Atualiza um item no banco de dados através da função update', () => {
+  //   const objEnviado = { name: "produto", quantity: 10 };
+  //   before(async () => {
+  //     const retorno = {
+  //       fieldCount: 0,
+  //       affectedRows: 1,
+  //       insertId: 4,
+  //       info: "",
+  //       serverStatus: 2,
+  //       warningStatus: 0,
+  //     };
 
-      sinon.stub(connection, 'execute').resolves([retorno]);
-    });
+  //     sinon.stub(connection, 'execute').resolves([retorno]);
+  //   });
 
-    after(async () => {
-      connection.execute.restore();
-    });
-    it('Verifica o retorno da função update', async () => {
-      const response = await productsModel.update(objEnviado);
-      expect(response).to.be.an('number');
-    });
-  });
+  //   after(async () => {
+  //     connection.execute.restore();
+  //   });
+  //   it('Verifica o retorno da função update', async () => {
+  //     const response = await productsModel.update(objEnviado);
+  //     expect(response).to.be.an('number');
+  //   });
+  // });
   describe('Deleta um item do banco de dados através da função remove', () => {
     const id = 1;
     before(async () => {

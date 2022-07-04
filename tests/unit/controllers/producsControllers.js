@@ -108,35 +108,35 @@ describe('Testando a camada cntroller', () => {
       expect(res.status.calledWith(201)).to.be.equal(true);
     });
   });
-  describe('Testando Update', () => {
-    const obj = {
-      name: 'Martelo de Thor',
-      quantity: 10,
-    };
-    const retorno = {
-      id: 2,
-      name: 'product2',
-      quantity: 20,
-    };
+  // describe('Testando Update', () => {
+  //   const obj = {
+  //     name: 'Martelo de Thor',
+  //     quantity: 10,
+  //   };
+  //   const retorno = {
+  //     id: 2,
+  //     name: 'product2',
+  //     quantity: 20,
+  //   };
 
-    before(() => {
-      req.params = { id: 4 };
-      req.body = obj;
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
-      sinon.stub(productService, 'update').resolves(retorno);
-    });
+  //   before(() => {
+  //     req.params = { id: 4 };
+  //     req.body = obj;
+  //     res.status = sinon.stub().returns(res);
+  //     res.json = sinon.stub().returns();
+  //     sinon.stub(productService, 'update').resolves(retorno);
+  //   });
 
-    after(() => {
-      productService.update.restore();
-    });
+  //   after(() => {
+  //     productService.update.restore();
+  //   });
 
-    it('status 200', async () => {
-      await productController.update(req, res);
+  //   it('status 200', async () => {
+  //     await productController.update(req, res);
 
-      expect(res.status.calledWith(200)).to.be.true;
-    });
-  });
+  //     expect(res.status.calledWith(200)).to.be.true;
+  //   });
+  // });
 
   describe('testando função remove', () => {
     const res = {};
