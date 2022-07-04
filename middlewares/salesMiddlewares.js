@@ -1,14 +1,15 @@
 const productIdSales = (req, res, next) => {
-  const productId = req.body[0].productId;
-  if (!productId) {
+  const [productId2] = req.body;
+
+  if (!productId2.productId) {
     return res.status(400).json({ message: '"productId" is required' });
   }
   return next();
 };
 
 const quantitySales = (req, res, next) => {
-    const quantity = req.body[0].quantity;
-  if (quantity === undefined) {
+  const [quantity2] = req.body;
+  if (quantity2.quantity === undefined) {
     return res.status(400).json({ message: '"quantity" is required' });
   }
   const zero = 0;

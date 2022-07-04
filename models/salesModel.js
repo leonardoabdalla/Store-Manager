@@ -39,7 +39,6 @@ const salesUpdate = async (id, { productId, quantity }) => {
 };
 
 const addSale = async (sale) => {
-  // console.log(sale);
   const queryInsert = 'INSERT INTO StoreManager.sales (date) VALUES (NOW())';
   const result = await connection.execute(queryInsert);
   const query = `
@@ -50,8 +49,7 @@ const addSale = async (sale) => {
     sale.map(async (infoProduct) =>
       await connection.execute(query, [result[0]
         .insertId, infoProduct.productId, infoProduct.quantity])
-    )
-  );
+    ));
   console.log('result ==> ', result);
   const queryId = 'SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1';
   console.log('resultado ==> ', resultado);

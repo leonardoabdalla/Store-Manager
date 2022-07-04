@@ -23,8 +23,8 @@ const salesUpdate = async (id, itemUpdated) => {
 };
 
 const addSale = async (sale) => {
-  const productId = sale[0].productId;
-  const validId = await productsModel.getById(productId)
+  const [productId] = sale.productId;
+  const validId = await productsModel.getById(productId);
   const [valid2] = validId[0];
   if (valid2.id === undefined) {
     console.log('ok');
