@@ -35,6 +35,6 @@ const remove = (id) => productsModel.remove(id);
 module.exports = {
   getAll,
   add,
-  update,
+  // update,
   remove,
 };

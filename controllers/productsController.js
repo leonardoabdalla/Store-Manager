@@ -66,6 +66,6 @@ module.exports = {
   productsGetAll,
   productsGetId,
   newProduct,
-  update,
+  // update,
   remove,
 };
