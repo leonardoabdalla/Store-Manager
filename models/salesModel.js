@@ -48,8 +48,8 @@ const addSale = async (sale) => {
   await Promise.all(
     sale.map(async (infoProduct) =>
       await connection.execute(query, [result[0]
-        .insertId, infoProduct.productId, infoProduct.quantity])
-    ));
+        .insertId, infoProduct.productId, infoProduct.quantity]))
+  );
   console.log('result ==> ', result);
   const queryId = 'SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1';
   console.log('resultado ==> ', resultado);
