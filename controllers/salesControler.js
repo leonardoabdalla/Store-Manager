@@ -36,7 +36,7 @@ const salesUpdate = async (req, res, next) => {
   }
 };
 
-const addSale = async (req, res, next) => {
+const addSale = async (req, res) => {
   try {
     const sales = req.body;
     // console.log(sales);
@@ -50,7 +50,8 @@ const addSale = async (req, res, next) => {
     };
     res.status(201).json(result);
   } catch (err) {
-    next(err);
+    console.log(err);
+    res.status(404).json({ message: 'Product not found' });
   }
 };
 
@@ -64,7 +65,8 @@ const remove = async (req, res) => {
     await salesService.remove(id);
     res.status(204).end();
   } catch (err) {
-    res.status(500).end();
+    console.log(err)
+    res.status(404).json({ message: "Product not found" });
   }
 };
 

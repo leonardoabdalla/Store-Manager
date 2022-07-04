@@ -24,6 +24,9 @@ const getById = async (id) => {
   return conexaoBD;
 };
 
+// const getByProductId = async (sale) => {
+
+// }
 const salesUpdate = async (id, { productId, quantity }) => {
   const [rows] = await connection.execute(
     `UPDATE StoreManager.sales_products
@@ -36,19 +39,26 @@ const salesUpdate = async (id, { productId, quantity }) => {
 };
 
 const addSale = async (sale) => {
-  console.log(sale);
-  const queryInsert = 'INSERT INTO StoreManager.sales (date) VALUES (DEFAULT)';
-  await connection.execute(queryInsert);
+  // console.log(sale);
+  const queryInsert = 'INSERT INTO StoreManager.sales (date) VALUES (NOW())';
+  const result = await connection.execute(queryInsert);
   const query = `
       INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) 
-  VALUES (( SELECT MAX(id) FROM StoreManager.sales), ?, ?);
+  VALUES ( ?, ?, ?);
     `;
-  await sale.map((infoProduct) =>
-    connection.execute(query, [infoProduct.productId, infoProduct.quantity]));
+  const resultado = await Promise.all(
+    sale.map(async (infoProduct) =>
+      await connection.execute(query, [result[0].insertId, infoProduct.productId, infoProduct.quantity])
+    )
+  );
+  console.log('result ==> ', result);
   const queryId = 'SELECT id FROM StoreManager.sales ORDER BY id DESC LIMIT 1';
-
+  console.log('resultado ==> ', resultado);
+  
   const [id] = await connection.execute(queryId);
-  return id[0].id;
+  console.log('id ==> ', id);
+  console.log(result[0].insertId);
+  return result[0].insertId;
 };
 
 const remove = async (id) => {

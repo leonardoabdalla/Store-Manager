@@ -30,7 +30,7 @@ const createNewProduct = async (name) => {
     [name],
   );
   const result = {
-    id: row.insertId,
+    id: row.insertId - 1,
     name,
   };
   return result;

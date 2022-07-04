@@ -1,5 +1,6 @@
 const salesModel = require('../models/salesModel');
-// const productsModel = require('../models/productsModel');
+const productsModel = require('../models/productsModel');
+const { error } = require('shelljs');
 
 const getAll = (id = null) => {
   if (id) {
@@ -23,11 +24,12 @@ const salesUpdate = async (id, itemUpdated) => {
 };
 
 const addSale = async (sale) => {
-  const produto1 = sale[0].productId;
-  if (!produto1) {
-        throw new Error('mensagem teste');
+  const productId = sale[0].productId;
+  const validId = await productsModel.getById(productId)
+  const [valid2] = validId[0];
+  if (valid2.id === undefined) {
+    console.log('ok');
   }
-  // const [product] = await productsModel.getById(sale[0].productId);
   const sales = await salesModel.addSale(sale);
   return sales;
 };
