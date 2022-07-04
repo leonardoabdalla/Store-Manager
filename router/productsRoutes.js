@@ -14,7 +14,7 @@ router.post(
   // middleware.quantityProducts,
   productsController.newProduct,
 );
-router.put('/:id', productsController.update);
+// router.put('/:id', productsController.update);
 router.delete('/:id', productsController.remove);
 
 module.exports = router;

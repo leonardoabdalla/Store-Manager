@@ -16,19 +16,19 @@ const add = async ({ name }) => {
   return result;
 };
 
-const update = async (name, quantity, id) => {
-  const [rows] = await productsModel.getById(id);
-  if (rows.length === 0) {
-    throw new Error('Product not found');
-  }
-  await productsModel.update(name, quantity, id);
-  const newProductUpdate = {
-    id: rows[0].id,
-    name,
-    quantity,
-  };
-  return newProductUpdate;
-};
+// const update = async (name, quantity, id) => {
+//   const [rows] = await productsModel.getById(id);
+//   if (rows.length === 0) {
+//     throw new Error('Product not found');
+//   }
+//   await productsModel.update(name, quantity, id);
+//   const newProductUpdate = {
+//     id: rows[0].id,
+//     name,
+//     quantity,
+//   };
+//   return newProductUpdate;
+// };
 
 const remove = (id) => productsModel.remove(id);
 

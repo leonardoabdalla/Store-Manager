@@ -36,15 +36,15 @@ const createNewProduct = async (name) => {
   return result;
 };
 
-const update = async (name, quantity, id) => {
-  const [result] = await connection.execute(
-    `UPDATE StoreManager.
-    products SET name=?, quantity=? WHERE id=?`,
-    [name, quantity, id],
-  );
-  // console.log('modele => ', result);
-  return result.affectedRows;
-};
+// const update = async (name, quantity, id) => {
+//   const [result] = await connection.execute(
+//     `UPDATE StoreManager.
+//     products SET name=?, quantity=? WHERE id=?`,
+//     [name, quantity, id],
+//   );
+//   // console.log('modele => ', result);
+//   return result.affectedRows;
+// };
 
 const remove = (id) =>
   connection.execute('DELETE FROM StoreManager.products WHERE id=?', [id]);

@@ -33,17 +33,17 @@ const newProduct = async (req, res) => {
   }
 };
 
-const update = async (req, res, next) => {
-  try {
-    const { name, quantity } = req.body;
-    const { id } = req.params;
-    const result = await productsServices.update(name, quantity, id);
-    // console.log('controler => ', result);
-    res.status(200).json(result);
-  } catch (err) {
-    next(err);
-  }
-};
+// const update = async (req, res, next) => {
+//   try {
+//     const { name, quantity } = req.body;
+//     const { id } = req.params;
+//     const result = await productsServices.update(name, quantity, id);
+//     // console.log('controler => ', result);
+//     res.status(200).json(result);
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 const remove = async (req, res) => {
   try {
